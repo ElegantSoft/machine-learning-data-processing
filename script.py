@@ -5,6 +5,8 @@ import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import  OneHotEncoder, LabelEncoder
 from sklearn.compose import ColumnTransformer
+from sklearn.model_selection import train_test_split
+
 
 #import dataset
 dataset = pd.read_csv("Data.csv")
@@ -26,3 +28,6 @@ X = transformer_X.fit_transform(X)
 
 transformer_y = LabelEncoder()
 y = transformer_y.fit_transform(y)
+
+# Split data into training and test
+X_train, X_test, y_train, y_test = train_test_split(X, y ,test_size = 0.2, random_state = 0)
