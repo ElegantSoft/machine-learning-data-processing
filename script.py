@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import  OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import  OneHotEncoder, LabelEncoder,StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 
@@ -31,3 +31,10 @@ y = transformer_y.fit_transform(y)
 
 # Split data into training and test
 X_train, X_test, y_train, y_test = train_test_split(X, y ,test_size = 0.2, random_state = 0)
+
+
+# Feateure Scaling
+sc_X = StandardScaler()
+
+X_train = sc_X.fit_transform(X_train)
+X_test  = sc_X.transform(X_test)
